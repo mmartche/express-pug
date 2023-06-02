@@ -1,0 +1,27 @@
+extends base
+
+block append head
+  script(src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet')
+
+mixin overviewBox(label, text, icon)
+  .overview-box__detail
+    svg.overview-box__icon
+      use(xlink:href=`/img/icons.svg#icon-${icon}`)
+    span.overview-box__label= description
+    span.overview-box__text= name
+
+block content
+
+  section.section-cta
+    .cta
+      .cta__img.cta__img--logo
+        img(src='', alt='Todos logo')
+      .cta__content
+        label.heading-secondary= todo.description
+        button.btn.btn--green.span-all-rows= todo.name
+
+  section.section-map
+    #map(data-locations=`${JSON.stringify(todo.locations)}`)
+  
+  pre= todo

@@ -1,0 +1,830 @@
+{
+	"info": {
+		"_postman_id": "8adad689-11c8-4871-b266-a028abc9cf67",
+		"name": "TODODO API",
+		"description": "The Natours APi contains endpoints for Tours, Users, and Reviews.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "To-dos",
+			"item": [
+				{
+					"name": "Get All To-dos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/todos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "duration[gte]",
+									"value": "7",
+									"description": "Query for tour duration. Supports gte, lte, gt, lt operators.",
+									"disabled": true
+								},
+								{
+									"key": "price[lte]",
+									"value": "500",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "price",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Use this endpoint to create a new tour."
+					},
+					"response": []
+				},
+				{
+					"name": "Get To-do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/todos/5c88fa8cf4afda39709c2955",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"5c88fa8cf4afda39709c2955"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Todo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startLocation\": {\n      \"description\": \"Miami, USA\",\n      \"type\": \"Point\",\n      \"coordinates\": [-80.185942, 25.774772],\n      \"address\": \"301 Biscayne Blvd, Miami, FL 33132, USA\"\n    },\n    \"images\": [\"todo-2-1.jpg\", \"todo-2-2.jpg\", \"todo-2-3.jpg\"],\n    \"startDates\": [\n      \"2021-06-19T09:00:00.000Z\",\n      \"2021-07-20T09:00:00.000Z\",\n      \"2021-08-18T09:00:00.000Z\"\n    ],\n    \"name\": \"Test dp Martche1\",\n    \"description\": \"Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\",\n    \"imageCover\": \"todo-2-cover.jpg\",\n    \"locations\": [\n      {\n        \"_id\": \"5c88fa8cf4afda39709c2959\",\n        \"description\": \"Lummus Park Beach\",\n        \"type\": \"Point\",\n        \"coordinates\": [-80.128473, 25.781842],\n        \"day\": 1\n      },\n      {\n        \"_id\": \"5c88fa8cf4afda39709c2958\",\n        \"description\": \"Islamorada\",\n        \"type\": \"Point\",\n        \"coordinates\": [-80.647885, 24.909047],\n        \"day\": 2\n      },\n      {\n        \"_id\": \"5c88fa8cf4afda39709c2957\",\n        \"description\": \"Sombrero Beach\",\n        \"type\": \"Point\",\n        \"coordinates\": [-81.0784, 24.707496],\n        \"day\": 3\n      },\n      {\n        \"_id\": \"5c88fa8cf4afda39709c2956\",\n        \"description\": \"West Key\",\n        \"type\": \"Point\",\n        \"coordinates\": [-81.768719, 24.552242],\n        \"day\": 5\n      }\n    ]\n  }"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/todos",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Todo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageCover",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "price",
+									"value": "997",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/todos/5cdb06c8d87ca1051d90eda9",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"5cdb06c8d87ca1051d90eda9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Todo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/todos/5c88fa8cf4afda39709c295a",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"5c88fa8cf4afda39709c295a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Top 5 Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/todos/top-5",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"top-5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Todos Within Radius",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/todos/todos-within/200/center/34.111745,-118.113491/unit/mi",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"todos-within",
+								"200",
+								"center",
+								"34.111745,-118.113491",
+								"unit",
+								"mi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Distances to Todos From Point",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/todos/distances/34.111745,-118.113491/unit/mi",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"distances",
+								"34.111745,-118.113491",
+								"unit",
+								"mi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Todo Items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/todos/me/",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"todos",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**You can get all tours, create new ones, and edit and delete tours**. There are also special endpoints for some special requirements.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users?role=user",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "user"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/2",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"role\": \"user\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/5c8a23c82f8fb814b56fa18d",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"5c8a23c82f8fb814b56fa18d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/5cd1a3b341c1d027493464e3",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"5cd1a3b341c1d027493464e3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/me",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Current User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Jonas Schmedtmann\",\n\t\"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/updateMe",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"updateMe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Current User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/deleteMe",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"deleteMe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign Up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"NEW HACKER\",\n    \"email\": \"newhacker@hacker.com\",\n\t\"password\": \"pass1234\",\n\t\"passwordConfirm\": \"pass1234\",\n\t\"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/signup",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "laura@example.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "mmartche@hotmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "kate@example.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/login",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test3@natours.io\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/forgotPassword",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"newpassword\",\n\t\"passwordConfirm\": \"newpassword\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/resetPassword/1652bfc347b939d3d19cea352d231d6dbe6dfef0884e68e6c61629019c44b9ca",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"resetPassword",
+								"1652bfc347b939d3d19cea352d231d6dbe6dfef0884e68e6c61629019c44b9ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Current User Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"passwordCurrent\": \"pass1234\",\n\t\"password\": \"newpassword\",\n\t\"passwordConfirm\": \"newpassword\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/updateMyPassword",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"updateMyPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/logout",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://127.0.0.1:3001/",
+			"type": "default"
+		}
+	]
+}

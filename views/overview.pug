@@ -1,0 +1,23 @@
+extends base
+
+block content
+  main.main
+    .card-container
+    
+      each todo in todos
+        .card
+          .card__header
+            .card__picture
+              .card__picture-overlay &nbsp;
+            h3.heading-tertirary
+              span= todo.name
+
+          a.btn.btn--green.btn--small(href=`/todo/${todo.slug}`) Details
+          .card__details
+            h4.card__sub-heading= `${todo.name}`
+            p.card__text= todo.description
+            each guide in todo.guides
+              .card__data
+                svg.card__icon
+                  use(xlink:href='/img/icons.svg#icon-user')
+                span= `${guide.name} people`
